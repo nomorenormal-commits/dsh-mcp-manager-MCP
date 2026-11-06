@@ -36,6 +36,19 @@ dsh plugin --profile desktop add github:nomorenormal-commits/dsh-mcp-manager-MCP
 
 > 如果安装后设置页没有出现入口：确认 profile 的 `package.json` 的 `dependencies` 里有 `dsh-mcp-manager`，且 `dsh.profile.bundles` 里包含它；部分 DSH 版本需要手动把包名加进 bundles 数组。
 
+## 作为 Agent Skill 使用（Claude Code / Cursor / Copilot 等）
+
+仓库自带 [skill/](skill) 目录，是符合 Agent Skills 约定的技能封装，可上架到 Agensi 等技能市场：
+
+- [skill/SKILL.md](skill/SKILL.md)：告诉 agent 何时、如何使用本插件（含 API 契约、状态语义、安全边界）。
+- [skill/scripts/mcp-manager.mjs](skill/scripts/mcp-manager.mjs)：零依赖 CLI，封装全部 HTTP API（认证、增删改查、启停、检测、日志、导入导出），agent 拿到带 token 的 DSH 地址即可直接驱动。
+
+```sh
+node skill/scripts/mcp-manager.mjs --base "http://127.0.0.1:3199/?token=XXXX" list
+node skill/scripts/mcp-manager.mjs --base "..." add github --type stdio --command npx --arg -y --arg @modelcontextprotocol/server-github
+node skill/scripts/mcp-manager.mjs --base "..." export --out backup.json
+```
+
 ## 使用
 
 - **添加服务**：右上角「＋ 添加服务」。可从模板（Filesystem / GitHub / Fetch）起步，或手填。
