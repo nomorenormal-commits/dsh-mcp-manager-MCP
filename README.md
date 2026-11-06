@@ -29,7 +29,7 @@ dsh plugin --profile desktop add link:"C:\path\to\dsh-mcp-manager"
 从 GitHub 安装（仓库发布后）：
 
 ```sh
-dsh plugin --profile desktop add github:<owner>/dsh-mcp-manager
+dsh plugin --profile desktop add github:nomorenormal-commits/dsh-mcp-manager-MCP
 ```
 
 安装后重启 DSH（或等 loader 热加载），打开 **设置 → MCP 服务**。
