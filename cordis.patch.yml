@@ -1,0 +1,6 @@
+# dsh-mcp-manager — host half mount point.
+# The manager writes user MCP servers into <profile>/cordis.patch.yml under its
+# own managed block; this row only mounts the plugin itself.
+- insert:
+    - id: dsh-mcp-manager
+      name: dsh-mcp-manager
